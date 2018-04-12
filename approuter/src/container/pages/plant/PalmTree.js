@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import {withRouter} from 'react-router-dom';
 
 class PalmTree extends Component {
 
@@ -8,10 +9,10 @@ class PalmTree extends Component {
     render() {
         return (
             <div>
-                
+                PalmTree
             </div>
         );
     }
 }
 
-export default PalmTree;
+export default withRouter(PalmTree);
