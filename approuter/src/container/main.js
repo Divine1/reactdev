@@ -1,7 +1,13 @@
 import React,{Component} from 'react';
 import {Route,NavLink,Switch,Redirect} from 'react-router-dom';
-import Animal from './pages/Animal';
+/* import Animal from './pages/Animal'; */
 import Plant from './pages/Plant';
+
+import asyncComponent from './../hoc/asyncComponent';
+
+const AsyncComponentAnimal = asyncComponent(()=>{
+    return import('./pages/Animal');
+});
 
 class Main extends Component{
     render(){
@@ -20,8 +26,10 @@ class Main extends Component{
                     >Plant</NavLink></li>
                 </ul>
                 <hr />
+                {/* AsyncComponentAnimal */}
                 <Switch>
-                    <Route path="/animal" component={Animal} />
+                    {/* <Route path="/animal" component={Animal} /> */}
+                    <Route path="/animal" component={AsyncComponentAnimal} />
                     <Route path="/plant/:id" component={Plant} />
                     {/* <Route path="/" render ={() => <h1>in route</h1>} /> */}
                     {/* <Redirect from="/" to="/animal" /> */}
