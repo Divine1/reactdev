@@ -14,7 +14,7 @@ class Sports extends Component{
                                 <h3>Sports</h3>
                                 <div>
                                     {
-                                        value.country.map(item => <div key={item.id}>{item.id}</div>)
+                                        value.country.map(item => <div key={item.id}>{item.id} -- {item.name}</div>)
                                     }
                                 </div>
                                 {/* <div className="button" onClick={value.updateCountryName.bind(this,"id12")}>Sports Click</div> */}

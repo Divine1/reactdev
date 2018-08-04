@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
 
 const Context = React.createContext();
-const updateCountryName = ()=>{
+/* const updateCountryName = ()=>{
     console.log("update country name");
 
-};
+}; */
 class ProviderComponent extends Component{
     constructor(){
         super();
@@ -30,9 +30,15 @@ class ProviderComponent extends Component{
             ],
             updateCountryName : (id) =>{
                 console.log("in updateCountryName arrow ",id);
+                var {country} = this.state;
+                console.log("before country ",country);
+                country = country.map(item => ({id:item.id,name:item.name+"12"}));
+                console.log("after country ",country);
                 this.setState({
-                    
-                })
+                    ...this.state,
+                    country : country
+                }); 
+                console.log("last country ",this.state); 
             }
         }
     }
