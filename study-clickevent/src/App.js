@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
-import Contact from './Contact';
 
+import {Provider} from './context/context';
+
+import Contact from './Contact';
+import Sports from './components/Sports';
 import './App.css';
 
 class App extends Component {
@@ -36,21 +39,24 @@ class App extends Component {
     var {city,status} = this.state;
     status = status ? "true" : "false";
     return (
-      <div className="App">
-        <h3>header</h3>
-        <div>
-          {/*city.map(item => <div>{item}</div>)*/}
-          {city.map((item,index) => <div key={index}>{item}  - {index}</div>)}
-          <div className="button" onClick={this.triggerButtonNormal.bind(this,"divine")}>button normal</div>
-          <br /><br />
-          <div className="button" onClick={this.triggerButtonArrow.bind(this,"divine")}>button Arrow</div>
+      <Provider>
+        <div className="App">
+          <h3>header</h3>
           <div>
-            status : {status} 
-            <div className="button" onClick={this.changeStatus.bind(this)}>Change status</div>
+            {/*city.map(item => <div>{item}</div>)*/}
+            {city.map((item,index) => <div key={index}>{item}  - {index}</div>)}
+            <div className="button" onClick={this.triggerButtonNormal.bind(this,"divine")}>button normal</div>
+            <br /><br />
+            <div className="button" onClick={this.triggerButtonArrow.bind(this,"divine")}>button Arrow</div>
+            <div>
+              status : {status} 
+              <div className="button" onClick={this.changeStatus.bind(this)}>Change status</div>
+            </div>
           </div>
+          <Contact updateUser={this.updateUser} />
+          <Sports />
         </div>
-        <Contact updateUser={this.updateUser} />
-      </div>
+      </Provider>
     );
   }
 }
