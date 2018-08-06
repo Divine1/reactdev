@@ -1,11 +1,13 @@
-import {GET_SPORTS} from '../actions/types';
+import {GET_SPORTS,ADD_SPORTS} from '../actions/types';
 
 const initialState = {
-    sports :{
-        test : "divine",
-        game : "cricket",
-        player:"sachin"
-    }
+    sports : [
+        {
+            id : "1",
+            country:"india",
+            player : "kohli"
+        }
+    ]
 };
 
 
@@ -13,9 +15,13 @@ const SportsReducer = (state = initialState,action)=>{
     switch(action.type){
         case GET_SPORTS:
             return {
-                "wwe" : "dave",
                 ...state
             };
+        case ADD_SPORTS:
+            state.sports.push(action.payload)
+            return{
+                ...state
+            }
         default:
             return state;
     }
